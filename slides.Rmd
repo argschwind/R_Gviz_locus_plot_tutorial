@@ -60,6 +60,7 @@ BiocManager::install("rtacklayer")
 # install packages from CRAN
 install.packages("dplyr")
 install.packages("data.table")
+install.packages("R.utils")
 ```
 
 ## Let's start small
