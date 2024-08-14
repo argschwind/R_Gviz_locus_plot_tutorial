@@ -106,7 +106,7 @@ genes_track <- GeneRegionTrack(genes, genome = "hg38", name = "Genes",
                                transcriptAnnotation = "symbol")
 
 # create chromosome ideogram and axis track
-chr_track <- IdeogramTrack(genome = "hg38")
+chr_track <- IdeogramTrack(genome = "hg38", chromosome = "chr7")
 axis_track <- GenomeAxisTrack()
 ```
 
@@ -605,8 +605,8 @@ plotTracks(dTrack, groups = rep(c("control", "treated"), each = 3),
 - The different track classes allow to display a wide variety of data in many
 different ways.
 - This also allows to write scripts that can quickly create the same plot for
-differnt loci and in put files.
-- Gviz isn't interactive and therefor not a genome browser replacement.
+different loci and in put files.
+- Gviz isn't interactive and therefore not a genome browser replacement.
 
 ## Now it's your turn!
 
