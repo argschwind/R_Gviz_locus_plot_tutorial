@@ -27,9 +27,9 @@ library(data.table)
 
 - However, it has limitations when making locus plots for publication figures
 
-- Gviz R-package from Bioconductor allows making custom locus plots in R:
+- Gviz R-package on Bioconductor allows making custom locus plots in R:
   - Highly customizable plots
-  - Allows for easy reproduction
+  - Programmatic approach helps with reproducibility
   - Allows to write functions and scripts that easily generalize across many loci
 
 - A detailed overview of the package can be found here: https://bioconductor.org/packages/release/bioc/vignettes/Gviz/inst/doc/Gviz.html
@@ -55,7 +55,7 @@ if (!require("BiocManager", quietly = TRUE))
 # install Bioconductor packages
 BiocManager::install("Gviz")
 BiocManager::install("GenomicInteractions")
-BiocManager::install("rtacklayer")
+BiocManager::install("rtracklayer")
 
 # install packages from CRAN
 install.packages("dplyr")
@@ -66,7 +66,7 @@ install.packages("R.utils")
 ## Let's start small
 
 Plots in Gviz are built by adding different tracks to the plot, similar to adding
-tracks in a genome browser. Let's start with at simple plot that shows genes!
+tracks in a genome browser. Let's start with a simple plot that shows genes.
 
 Load genome annotations from a .gtf file:
 
@@ -98,7 +98,7 @@ head(genes, 2)
 ## Let's start small
 
 We can now create a `GeneRegionTrack` object that contains our gene annotations.
-Additionally, we can easily create chromsome ideogram and genome axis tracks.
+Additionally, we can easily create chromosome ideogram and genome axis tracks.
 
 ```{r}
 # make genes track
@@ -114,7 +114,7 @@ axis_track <- GenomeAxisTrack()
 
 The `plotTracks` function prints our tracks for a specified region of the genome.
 Note how we specify the field of view coordinates. Track sizes are used to set the
-relative height of the individual tracks.
+relative height of the individual tracks in the plot.
 
 ```{r, fig.show='hide'}
 # coordinates of locus to be shown in plot
@@ -140,8 +140,8 @@ plotTracks(trackList = list(chr_track, axis_track, genes_track), sizes = track_s
 
 ## Cleaning up the genes track
 
-By default, the genes track shows each annotated transcript. To declutter the genes
-track, we can collapse all transcripts per genes into a "meta transcript".
+By default, the genes track shows each annotated transcript. To declutter the track,
+we can collapse all transcripts per genes into a "meta transcript".
 
 While we're at it, let's also change the color for the genes track.
 
@@ -360,7 +360,7 @@ plotTracks(trackList = list(chr_track, axis_track, genes_track, e2g_track,
 ## Only showing interactions for one gene
 
 Interactions from predictive models like ENCODE-rE2G can get very busy. Depending on
-the purose of a plot, it's possible to only show interactions for one gene by
+the purpose of a plot, it's possible to only show interactions for one gene by
 subsetting the interactions.
 
 ```{r, fig.show='hide'}

@@ -3352,11 +3352,11 @@ background-color: #e5e5e5;
 <ul>
 <li><p>IGV is a powerful tool to interactively explore loci across the genome</p></li>
 <li><p>However, it has limitations when making locus plots for publication figures</p></li>
-<li><p>Gviz R-package from Bioconductor allows making custom locus plots in R:</p>
+<li><p>Gviz R-package on Bioconductor allows making custom locus plots in R:</p>
 
 <ul>
 <li>Highly customizable plots</li>
-<li>Allows for easy reproduction</li>
+<li>Programmatic approach helps with reproducibility</li>
 <li>Allows to write functions and scripts that easily generalize across many loci</li>
 </ul></li>
 <li><p>A detailed overview of the package can be found here: <a href='https://bioconductor.org/packages/release/bioc/vignettes/Gviz/inst/doc/Gviz.html' title=''>https://bioconductor.org/packages/release/bioc/vignettes/Gviz/inst/doc/Gviz.html</a></p></li>
@@ -3380,7 +3380,7 @@ if (!require(&quot;BiocManager&quot;, quietly = TRUE))
 # install Bioconductor packages
 BiocManager::install(&quot;Gviz&quot;)
 BiocManager::install(&quot;GenomicInteractions&quot;)
-BiocManager::install(&quot;rtacklayer&quot;)
+BiocManager::install(&quot;rtracklayer&quot;)
 
 # install packages from CRAN
 install.packages(&quot;dplyr&quot;)
@@ -3389,7 +3389,7 @@ install.packages(&quot;R.utils&quot;)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Let’s start small</h2></hgroup><article  id="lets-start-small">
 
-<p>Plots in Gviz are built by adding different tracks to the plot, similar to adding tracks in a genome browser. Let’s start with at simple plot that shows genes!</p>
+<p>Plots in Gviz are built by adding different tracks to the plot, similar to adding tracks in a genome browser. Let’s start with a simple plot that shows genes.</p>
 
 <p>Load genome annotations from a .gtf file:</p>
 
@@ -3423,7 +3423,7 @@ head(genes, 2)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Let’s start small</h2></hgroup><article  id="lets-start-small-2">
 
-<p>We can now create a <code>GeneRegionTrack</code> object that contains our gene annotations. Additionally, we can easily create chromsome ideogram and genome axis tracks.</p>
+<p>We can now create a <code>GeneRegionTrack</code> object that contains our gene annotations. Additionally, we can easily create chromosome ideogram and genome axis tracks.</p>
 
 <pre class = 'prettyprint lang-r'># make genes track
 genes_track &lt;- GeneRegionTrack(genes, genome = &quot;hg38&quot;, name = &quot;Genes&quot;,
@@ -3435,7 +3435,7 @@ axis_track &lt;- GenomeAxisTrack()</pre>
 
 </article></slide><slide class=""><hgroup><h2>Let’s start small</h2></hgroup><article  id="lets-start-small-3">
 
-<p>The <code>plotTracks</code> function prints our tracks for a specified region of the genome. Note how we specify the field of view coordinates. Track sizes are used to set the relative height of the individual tracks.</p>
+<p>The <code>plotTracks</code> function prints our tracks for a specified region of the genome. Note how we specify the field of view coordinates. Track sizes are used to set the relative height of the individual tracks in the plot.</p>
 
 <pre class = 'prettyprint lang-r'># coordinates of locus to be shown in plot
 chr &lt;- &quot;chr7&quot;
@@ -3455,7 +3455,7 @@ plotTracks(trackList = list(chr_track, axis_track, genes_track), sizes = track_s
 
 </article></slide><slide class=""><hgroup><h2>Cleaning up the genes track</h2></hgroup><article  id="cleaning-up-the-genes-track">
 
-<p>By default, the genes track shows each annotated transcript. To declutter the genes track, we can collapse all transcripts per genes into a &ldquo;meta transcript&rdquo;.</p>
+<p>By default, the genes track shows each annotated transcript. To declutter the track, we can collapse all transcripts per genes into a &ldquo;meta transcript&rdquo;.</p>
 
 <p>While we’re at it, let’s also change the color for the genes track.</p>
 
@@ -3632,7 +3632,7 @@ plotTracks(trackList = list(chr_track, axis_track, genes_track, e2g_track,
 
 </article></slide><slide class=""><hgroup><h2>Only showing interactions for one gene</h2></hgroup><article  id="only-showing-interactions-for-one-gene">
 
-<p>Interactions from predictive models like ENCODE-rE2G can get very busy. Depending on the purose of a plot, it’s possible to only show interactions for one gene by subsetting the interactions.</p>
+<p>Interactions from predictive models like ENCODE-rE2G can get very busy. Depending on the purpose of a plot, it’s possible to only show interactions for one gene by subsetting the interactions.</p>
 
 <pre class = 'prettyprint lang-r'># subset interactions for only one gene
 e2g_int_subset &lt;- e2g_int[e2g_int$gene == &quot;PRKAR2B&quot;]

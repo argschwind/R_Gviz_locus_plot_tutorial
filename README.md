@@ -30,7 +30,7 @@ if (!require("BiocManager", quietly = TRUE))
 # install Bioconductor packages
 BiocManager::install("Gviz")
 BiocManager::install("GenomicInteractions")
-BiocManager::install("rtacklayer")
+BiocManager::install("rtracklayer")
 
 # install packages from CRAN
 install.packages("dplyr")
