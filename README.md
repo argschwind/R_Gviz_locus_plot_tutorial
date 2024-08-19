@@ -7,9 +7,9 @@ packages.
   <img src="figures/locus_plot.png" width=95% height=95%>
 </div>
 
-The `slides.html` file contains the slides which can be downloaded and viewed in a web browser (e.g.
-Chrome of Safari). All code for the tutorial is in `slides.Rmd`, which can be used to reproduce the
-shown plots and as basis try making your own plots.
+Tutorial slides can be viewed at: https://argschwind.github.io/R_Gviz_locus_plot_tutorial. All code
+for the tutorial can be found in `tutorial.Rmd`, which can be used to reproduce the shown plots and
+as basis for making your own plots.
 
 ## Executing the code
 
@@ -39,7 +39,7 @@ install.packages("R.utils")
 ```
 
 To execude the code, navigate to the cloned tutorial folder via `cd` or `setwd` in R, and you should
-be able to execute the code in `slides.Rmd`.
+be able to execute the code in `tutorial.Rmd`.
 
 ## Further reading
 
