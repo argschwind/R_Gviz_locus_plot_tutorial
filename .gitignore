@@ -3,5 +3,7 @@
 .RData
 .Ruserdata
 *.Rproj
-slides_cache
-slides_files
+tutorial_cache
+docs/index_files
+figures/locus_plot.pdf
+data/*.bigWig
